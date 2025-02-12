@@ -1,5 +1,5 @@
 name: kubernetes-infrastructure
-version: 1.5.7
+version: 1.5.8
 url: https://github.com/TheRacetrack/plugin-kubernetes-infrastructure
 category: 'infrastructure'
 components:

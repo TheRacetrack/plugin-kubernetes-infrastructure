@@ -3,7 +3,7 @@ from collections import defaultdict
 import os
 
 from kubernetes import client
-from kubernetes.client import V1ObjectMeta, V1Pod, V1Deployment, V1PodStatus
+from kubernetes.client import V1ObjectMeta, V1Pod, V1Deployment
 from kubernetes.config import load_incluster_config
 
 K8S_NAMESPACE = os.environ.get('JOB_K8S_NAMESPACE', 'racetrack')
