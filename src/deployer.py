@@ -113,6 +113,7 @@ class KubernetesJobDeployer(JobDeployer):
             'cpu_max': cpu_max,
             'job_k8s_namespace': K8S_NAMESPACE,
             'runtime_secret_vars': runtime_secret_vars or {},
+            'infrastructure_target': 'kubernetes',
         }
         
         container_vars = []  # list of container tuples: (container_name, image_name, container_port)

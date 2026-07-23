@@ -15,3 +15,4 @@ This document describes compatibility of the versions of this plugin with the Ra
 | 1.5.5          | `>= 2.32.0`                  |                                |
 | 1.5.6          | `>= 2.32.0`                  |                                |
 | 1.5.9          | `>= 2.32.0`                  |                                |
+| 1.6.0          | `>= 2.36.1`                  |                                |

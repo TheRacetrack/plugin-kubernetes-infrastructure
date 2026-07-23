@@ -16,7 +16,7 @@ from racetrack_commons.deploy.resource import job_resource_name
 from racetrack_commons.entities.dto import JobDto, JobStatus
 from racetrack_client.log.logs import get_logger
 
-from utils import get_recent_job_pod, k8s_api_client, K8S_JOB_NAME_LABEL, K8S_JOB_VERSION_LABEL, \
+from utils import K8S_JOB_INFRASTRUCTURE_TARGET, get_recent_job_pod, k8s_api_client, K8S_JOB_NAME_LABEL, K8S_JOB_VERSION_LABEL, \
     K8S_NAMESPACE, K8S_JOB_RESOURCE_LABEL, get_job_deployments, get_job_pods
 from health import check_until_job_is_operational, quick_check_job_condition, KNOWN_FAULTY_STATE_MESSAGES, KNOWN_FAULTY_STATE_REASONS
 
@@ -48,7 +48,9 @@ class KubernetesMonitor(JobMonitor):
             metadata: V1ObjectMeta = recent_pod.metadata
             job_name = metadata.labels.get(K8S_JOB_NAME_LABEL)
             job_version = metadata.labels.get(K8S_JOB_VERSION_LABEL)
-            if not (job_name and job_version):
+            infrastructure_target = metadata.labels.get(K8S_JOB_INFRASTRUCTURE_TARGET)
+
+            if not (job_name and job_version) or (infrastructure_target is not None and infrastructure_target != 'kubernetes' and infrastructure_target != ''):
                 continue
 
             start_timestamp = datetime_to_timestamp(recent_pod.metadata.creation_timestamp)
