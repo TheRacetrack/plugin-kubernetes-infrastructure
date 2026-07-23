@@ -10,6 +10,7 @@ K8S_NAMESPACE = os.environ.get('JOB_K8S_NAMESPACE', 'racetrack')
 K8S_JOB_RESOURCE_LABEL = "racetrack/job"
 K8S_JOB_NAME_LABEL = "racetrack/job-name"
 K8S_JOB_VERSION_LABEL = "racetrack/job-version"
+K8S_JOB_INFRASTRUCTURE_TARGET = "racetrack/infrastructure-target"
 
 
 def k8s_api_client() -> client.ApiClient:
